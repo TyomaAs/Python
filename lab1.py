@@ -6,7 +6,7 @@ A = []
 a = 1
 b = 0
 
-for i in range(size):  # * перелічуємо від i до кінця розміру масиву
+for i in range(size):
     a *= (2 * (i + 1) - 1) * math.cos(i + 1)
     b += (i + 1) * (i + 1)
     A.append(a / b)
@@ -25,7 +25,6 @@ for i in range(len(A)):
             ATemp = A[j]
         if minTemp > ATemp:
             min = A[j]
-    #! B.append(min)
     print(min)
     A.remove(min)
     if len(A) != 0:
