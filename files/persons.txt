@@ -1,6 +1,7 @@
-1	Artemii Tsipino	IT	Web-developer	2004;
-2	Marian Tsenkner	IT	Designer	2004;
-3	Tylyschak Olexandr	Mathematic	Python master	1990;
-4	Vasyl Synko	IT	C++ Developer	2004;
-5	Mykhailo Ponomaryov	Mathematic	All math pro	2003;
-6	Evhen Prudnik	IT	C++ Developer	2004;
+1	Artemii Tsipino	IT	Web Developer	2004;
+2	Vasyl Synko	IT	Developer	2004;
+3	Marian Tsenkner	IT	Web Developer	2004;
+4	Mykhailo Ponomaryov	Mathematic	Mathematic	2003;
+5	Olexandr Tylyschak	Mathematic	1990;
+6	Evhen Prudnik	IT	Developer	2004;
+7	Andrew Ivanov	Physic	Developer	2004;
