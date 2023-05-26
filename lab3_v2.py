@@ -3,7 +3,7 @@ from tkinter import *
 
 root = Tk()
 
-root['bg'] = '#252525'
+root['bg'] = '#AAAAAA'
 root.title('Laboratory 3')
 root.geometry('500x500')
 
@@ -27,7 +27,7 @@ class Shape:
         self.angle += angle
 
     def __add__(self, other):
-        return Shape(self.x + other.x, self.y + other.y, self.angle + other.angle)
+        return Trapezium(self.x + other.x, self.y + other.y, self.angle + other.angle, self.base1 + other.base1, self.base2 + other.base2, self.height + other.height)
 
     def __iter__(self):
         yield self.x
@@ -46,8 +46,9 @@ class Trapezium(Shape):
     def area(self):
         return (self.base1 + self.base2) * self.height / 2
 
+    # TODO: Fix incorrect angle calculation
     def rotated_vertices(self, angle):
-        dx = self.base2 / 2 - self.base1 / 2
+        dx = (self.base2 / 2 - self.base1) / 2
         dy = self.height / 2
         r = math.sqrt(dx ** 2 + dy ** 2)
         phi = math.atan2(dy, dx) + math.radians(angle)
@@ -61,10 +62,10 @@ class Trapezium(Shape):
 
         vertices = []
         for vertex in vertices_old:
-            rotated_x = x + (vertex[0] * math.cos(phi) +
+            rotated_x = x + (vertex[0] * math.cos(phi) -
                              vertex[1] * math.sin(phi))
-            rotated_y = y + \
-                (-vertex[0] * math.sin(phi) + vertex[1] * math.cos(phi))
+            rotated_y = y + (vertex[1] * math.cos(phi) +
+                             vertex[0] * math.sin(phi))
             vertices.append((rotated_x, rotated_y))
 
         return vertices
@@ -84,7 +85,7 @@ def main():
     # base2 = float(input("Введіть довжину другої основи: "))
     # height = float(input("Введіть висоту: "))
     # trap = Trapezium(x, y, angle, base1, base2, height)
-    trap = Trapezium(150, 150, 0, 200, 120, 80)
+    trap = Trapezium(200, 200, 0, 200, 120, 80)
     trap.show()
     print()
     while True:
@@ -109,8 +110,7 @@ def main():
         elif choice == "3":
             print("Площа трапеції:", trap.area)
         elif choice == "4":
-            angle = float(input("Введіть кут повороту (у градусах): "))
-            vertices = trap.rotated_vertices(angle)
+            vertices = trap.rotated_vertices(0)
             print("Координати вершин трапеції:")
             for vertex in vertices:
                 print("({:.2f}, {:.2f})".format(vertex[0], vertex[1]))
